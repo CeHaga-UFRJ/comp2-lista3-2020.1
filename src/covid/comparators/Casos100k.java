@@ -7,8 +7,12 @@ import java.util.Comparator;
 public class Casos100k implements Comparator<Caso> {
     @Override
     public int compare(Caso c1, Caso c2){
-        if(c1.getConfirmadoPorMil() < c2.getConfirmadoPorMil()) return 1;
-        if(c1.getConfirmadoPorMil() == c2.getConfirmadoPorMil()) return 0;
+        if(c1.getConfirmado100k() < c2.getConfirmado100k()) return 1;
+        if(c1.getConfirmado100k() == c2.getConfirmado100k()) {
+            if(c1.getData().isBefore(c2.getData())) return 1;
+            if(c1.getData().isAfter(c2.getData())) return -1;
+            return 0;
+        }
         return -1;
     }
 }
