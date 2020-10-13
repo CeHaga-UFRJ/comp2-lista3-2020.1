@@ -35,12 +35,12 @@ public class Caso {
         mortes = Integer.parseInt(dados[5]);
         posicao = Integer.parseInt(dados[6]);
         ultimo = dados[7].equals("True");
-        populacao2019 = dados[8].isEmpty() ? 0 : Integer.parseInt(dados[8]);
-        populacao2020 = dados[9].isEmpty() ? 0 : Integer.parseInt(dados[9]);
+        populacao2019 = dados[8].isEmpty() ? -1 : Integer.parseInt(dados[8]);
+        populacao2020 = dados[9].isEmpty() ? -1 : Integer.parseInt(dados[9]);
         if(!dados[11].isEmpty()){
             confirmado100k = Double.parseDouble(dados[11]);
         }else{
-            double pop = populacao2020 == 0 ? populacao2019 == 0 ? -confirmado : populacao2019 : populacao2020;
+            double pop = populacao2020 <= 0 ? populacao2019 <= 0 ? -confirmado : populacao2019 : populacao2020;
             confirmado100k = (confirmado / pop) * 10e5;
         }
         taxaMorte = Double.parseDouble(dados[12]);

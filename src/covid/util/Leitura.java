@@ -40,6 +40,7 @@ public abstract class Leitura {
             br.readLine(); //Cabecalho
             while((linha = br.readLine()) != null){
                 Caso caso = new Caso(linha);
+                if(caso.getConfirmado100k() < 0) continue;
                 String key;
                 if(caso.isEstado()){
                     if(cidade != null) continue;
