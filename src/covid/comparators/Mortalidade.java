@@ -4,6 +4,10 @@ import covid.data.Caso;
 
 import java.util.Comparator;
 
+/**
+ * Comparador de taxa de mortalidade
+ * @author Carlos Bravo - cehaga@dcc.ufrj.br
+ */
 public class Mortalidade implements Comparator<Caso> {
     @Override
     public int compare(Caso c1, Caso c2){

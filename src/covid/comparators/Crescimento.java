@@ -4,8 +4,11 @@ import covid.data.Caso;
 
 import java.util.Comparator;
 
+/**
+ * Comparador de taxa de crescimento
+ * @author Carlos Bravo - cehaga@dcc.ufrj.br
+ */
 public class Crescimento implements Comparator<Caso> {
-
     @Override
     public int compare(Caso c1, Caso c2) {
         if(c1.getTaxaCrescimento() < c2.getTaxaCrescimento()) return 1;

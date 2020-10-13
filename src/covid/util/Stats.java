@@ -7,6 +7,10 @@ import covid.data.Caso;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * Classe para representar estatísticas
+ * @author Carlos Bravo - cehaga@dcc.ufrj.br
+ */
 public class Stats {
     private SetCidade maior_casos_100k;
     private SetCidade menor_casos_100k;
@@ -29,6 +33,10 @@ public class Stats {
         maior_taxa_crescimento = new SetCidade(new Crescimento().reversed());
     }
 
+    /**
+     * Adiciona um caso em cada estatística, aplicando os filtros necessários
+     * @param c Caso a ser adicionado
+     */
     public void add(Caso c){
         if(c.getData().isBefore(primDia)) {
             primCaso = null;
@@ -59,30 +67,50 @@ public class Stats {
         }
     }
 
+    /**
+     * Retorna uma lista com o ranking de maiores casos por 100k habitantes
+     * @return Ranking de maior casos
+     */
     public List<Caso> listaMaiorCaso(){
         List<Caso> lista = new ArrayList<Caso>(maior_casos_100k);
         lista.sort(maior_casos_100k.comparator().reversed());
         return lista;
     }
 
+    /**
+     * Retorna uma lista com o ranking de menores casos por 100k habitantes
+     * @return Ranking de menor casos
+     */
     public List<Caso> listaMenorCaso(){
         List<Caso> lista = new ArrayList<Caso>(menor_casos_100k);
         lista.sort(menor_casos_100k.comparator().reversed());
         return lista;
     }
 
+    /**
+     * Retorna uma lista com o ranking de maior mortalidade
+     * @return Ranking de maior mortalidade
+     */
     public List<Caso> listaMaiorMortalidade(){
         List<Caso> lista = new ArrayList<Caso>(maior_mortalidade);
         lista.sort(maior_mortalidade.comparator().reversed());
         return lista;
     }
 
+    /**
+     * Retorna uma lista com o ranking de menores mortalidades
+     * @return Ranking de menor mortalidade
+     */
     public List<Caso> listaMenorMortalidade(){
         List<Caso> lista = new ArrayList<Caso>(menor_mortalidade);
         lista.sort(menor_mortalidade.comparator().reversed());
         return lista;
     }
 
+    /**
+     * Retorna uma lista com o ranking de maiores taxas de crescimento no último mês
+     * @return Ranking de maiores taxas de crescimento
+     */
     public List<Caso> listaMaiorTaxaCrescimento(){
         List<Caso> lista = new ArrayList<Caso>(maior_taxa_crescimento);
         lista.sort(maior_taxa_crescimento.comparator().reversed());

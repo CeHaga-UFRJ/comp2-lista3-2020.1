@@ -8,9 +8,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.zip.GZIPInputStream;
 
+/**
+ * Classe abstrata para geração do gráfico web
+ * @author Carlos Bravo - cehaga@dcc.ufrj.br
+ */
 public abstract class Web {
+    /**
+     * Gera um gráfico e retorna true em caso de sucesso
+     * <p>É passado um mapa em que o local é uma String chave e sues valores respectivos são uma lista com os casos da região</p>
+     * @param mapa Mapa contendo os casos a serem postos no gráfico
+     * @return true se o gráfico foi gerado, false caso contrário
+     */
     public static boolean grafico(HashMap<String, List<Caso>> mapa){
         if(mapa.isEmpty()) return false;
         LocalDate dataFim = null;

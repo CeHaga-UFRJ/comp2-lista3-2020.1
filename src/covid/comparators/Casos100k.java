@@ -4,6 +4,10 @@ import covid.data.Caso;
 
 import java.util.Comparator;
 
+/**
+ * Comparador de casos por 100k habitantes
+ * @author Carlos Bravo - cehaga@dcc.ufrj.br
+ */
 public class Casos100k implements Comparator<Caso> {
     @Override
     public int compare(Caso c1, Caso c2){

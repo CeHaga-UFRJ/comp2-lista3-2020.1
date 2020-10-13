@@ -1,13 +1,22 @@
 package covid.util;
 
-import java.time.LocalDate;
 import java.util.*;
 import java.util.zip.GZIPInputStream;
 import java.io.*;
 import covid.data.Caso;
 import covid.out.Arquivo;
 
+/**
+ * Classe abstrata para realizar a leitura do arquivo
+ * @author Carlos Bravo - cehaga@dcc.ufrj.br
+ */
 public abstract class Leitura {
+    /**
+     * Gera um mapa dos locais com os casos de uma região escolhida
+     * <p>O mapa gerado tem como chave uma String com uma localização e como valores respectivos uma lista dos casos dessa região</p>
+     * @param lugar A região da qual se deseja obter os dados
+     * @return O mapa dos casos por região
+     */
     public static HashMap<String, List<Caso>> leDados(String lugar){
         Stats estatisticas = new Stats();
 
@@ -31,7 +40,6 @@ public abstract class Leitura {
             br.readLine(); //Cabecalho
             while((linha = br.readLine()) != null){
                 Caso caso = new Caso(linha);
-//                if(caso.getPopulacao2019() == 0 && caso.getPopulacao2020() == 0) continue;
                 String key;
                 if(caso.isEstado()){
                     if(cidade != null) continue;

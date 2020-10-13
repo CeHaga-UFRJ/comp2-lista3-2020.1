@@ -2,6 +2,10 @@ package covid.data;
 
 import java.time.LocalDate;
 
+/**
+ * Classe para representar um caso datado de uma cidade
+ * @author Carlos Bravo - cehaga@dcc.ufrj.br
+ */
 public class Caso {
     private LocalDate data;
     private String estado;
@@ -17,6 +21,10 @@ public class Caso {
     private double taxaMorte;
     private double taxaCrescimento;
 
+    /**
+     * Construtor de um caso
+     * @param caso Uma linha do arquivo disponibilizado pela data.brasil.io
+     */
     public Caso(String caso){
         String[] dados = caso.split(",");
         data = LocalDate.parse(dados[0]);
@@ -103,6 +111,11 @@ public class Caso {
         return false;
     }
 
+    /**
+     * Compara se os casos se referem à mesma localização
+     * @param o Objeto a ser comparado
+     * @return true se os casos são do mesmo lugar, false caso contrário
+     */
     public boolean isPlaceEquals(Object o){
         if(o == null) return false;
         if(o == this) return true;

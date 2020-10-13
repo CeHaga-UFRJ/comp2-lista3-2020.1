@@ -6,7 +6,15 @@ import covid.util.Stats;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Classe abstrata para geração de arquivos
+ * @author Carlos Bravo - cehaga@dcc.ufrj.br
+ */
 public abstract class Arquivo {
+    /**
+     * Gera os arquivos de estatísticas
+     * @param estatisticas As estatísticas a serem postas em arquivos
+     */
     public static void geraArquivo(Stats estatisticas){
         List<List<Caso>> listas = new ArrayList<List<Caso>>();
         listas.add(estatisticas.listaMaiorCaso());

@@ -7,6 +7,10 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
+/**
+ * Classe wrapper para uma PriorityQueue
+ * @author Carlos Bravo - cehaga@dcc.ufrj.br
+ */
 public class SetCidade implements Collection<Caso> {
     private PriorityQueue<Caso> lista;
 
@@ -44,6 +48,11 @@ public class SetCidade implements Collection<Caso> {
         return lista.toArray(ts);
     }
 
+    /**
+     * Adiciona um novo Caso tirando repetições e limitando a 10 itens totais
+     * @param caso Caso a ser adicionado
+     * @return true se foi possível adicionar, false caso contrário
+     */
     @Override
     public boolean add(Caso caso) {
         if(!lista.isEmpty()){
