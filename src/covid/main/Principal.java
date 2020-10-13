@@ -1,6 +1,7 @@
 package covid.main;
 
 import covid.data.Caso;
+import covid.out.Web;
 import covid.util.Leitura;
 
 import java.util.*;
@@ -17,7 +18,8 @@ public class Principal {
             System.out.print("Local não encontrado");
             System.exit(1);
         }
+        boolean grafico = Web.grafico(mapa);
         long elapsed = System.currentTimeMillis() - start;
-        System.out.println("Tudo foi executado em " + (float)elapsed/1000.0 + "segundos");
+        System.out.println("Tudo foi executado em " + (float)elapsed/1000.0 + " segundos");
     }
 }
