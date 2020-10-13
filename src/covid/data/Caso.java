@@ -15,7 +15,7 @@ public class Caso {
     private Integer populacao2020;
     private double confirmado100k;
     private double taxaMorte;
-    private double mortos100k;
+    private double taxaCrescimento;
 
     public Caso(String caso){
         String[] dados = caso.split(",");
@@ -36,8 +36,6 @@ public class Caso {
             confirmado100k = (confirmado / pop) * 10e5;
         }
         taxaMorte = Double.parseDouble(dados[12]);
-        double pop = populacao2020 == 0 ? populacao2019 == 0 ? -mortes : populacao2019 : populacao2020;
-        mortos100k = (mortes / pop) * 10e5;
     }
 
     public boolean isEstado(){
@@ -88,8 +86,12 @@ public class Caso {
         return taxaMorte;
     }
 
-    public double getMortos100k(){
-        return mortos100k;
+    public double getTaxaCrescimento() {
+        return taxaCrescimento;
+    }
+
+    public void setTaxaCrescimento(double taxaCrescimento) {
+        this.taxaCrescimento = taxaCrescimento;
     }
 
     public boolean isEquals(Object o){

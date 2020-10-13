@@ -4,7 +4,6 @@ import covid.data.Caso;
 import covid.util.Stats;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.*;
 
 public abstract class Arquivo {
@@ -12,10 +11,10 @@ public abstract class Arquivo {
         List<List<Caso>> listas = new ArrayList<List<Caso>>();
         listas.add(estatisticas.listaMaiorCaso());
         listas.add(estatisticas.listaMenorCaso());
-        listas.add(estatisticas.listaMaiorMortos());
-        listas.add(estatisticas.listaMenorMortos());
         listas.add(estatisticas.listaMaiorMortalidade());
-        String[] nomes = new String[]{"maior_casos_100k", "menor_casos_100k", "maior_mortos_100k", "menor_mortos_100k", "maior_mortalidade"};
+        listas.add(estatisticas.listaMenorMortalidade());
+        listas.add(estatisticas.listaMaiorTaxaCrescimento());
+        String[] nomes = new String[]{"maior_casos_100k", "menor_casos_100k", "maior_mortalidade", "menor_mortalidade", "maior_taxa_crescimento"};
         for(int i = 0; i < nomes.length; i++) {
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("resources/arquivos/"+nomes[i]+".tsv"), "utf-8"))) {
@@ -26,9 +25,9 @@ public abstract class Arquivo {
                     if(i == 0 || i == 1){
                         valor = c.getConfirmado100k();
                     }else if(i == 2 || i == 3){
-                        valor = c.getMortos100k();
-                    }else{
                         valor = c.getTaxaMorte();
+                    }else{
+                        valor = c.getTaxaCrescimento();
                     }
                     writer.write(c.getCidade()+"\t"+c.getData()+"\t"+valor+"\n");
                 }
